@@ -62,9 +62,11 @@ firmware/
 - **Connection:** Output → ADC pin (e.g. `GPIO 34`)
 - **Sampling Rate:** ~1 kHz (to capture full 50 Hz AC cycle)
 - **Computation:**
-  \[
+ ```
+\[
   V*{rms} = \sqrt{\frac{1}{N}\sum*{i=1}^{N}(V*i - V*{offset})^2}
   \]
+```
 - **Calibration:**
   - Determine the actual voltage using a multimeter.
   - Adjust the calibration constant until the measured RMS value matches the real value.
