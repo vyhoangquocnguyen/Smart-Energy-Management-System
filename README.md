@@ -137,9 +137,11 @@ frontend/
 
 ## 🧩 Data Flow Summary
 
+```
 [ESP32 + Sensors] → (MQTT) → [Node.js Backend] → (MongoDB)
 ↓
 [React Dashboard]
+```
 
 ### 📁 Part 8 — Repo Structure
 ## 🚀 Suggested Repo Structure
