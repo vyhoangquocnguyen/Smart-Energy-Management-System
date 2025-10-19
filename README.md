@@ -49,7 +49,7 @@ OTA firmware update (optional in later phase).
 ---
 
 ### 💻 **Part 4 — Backend Layer**
-```markdown
+
 ### 2. Backend Layer (Node.js + MongoDB)
 
 #### ⚙️ Core Features
@@ -64,7 +64,7 @@ OTA firmware update (optional in later phase).
 
 #### 🧩 Folder Structure
 
-
+```
 backend/
 ┣ src/
 ┃ ┣ models/
