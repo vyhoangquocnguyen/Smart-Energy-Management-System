@@ -80,12 +80,13 @@ backend/
 ┣ package.json
 ┗ README.md
 
+### 💡 Part 5 — Backend Add-ons
 #### 💡 Extra Ideas
 - Predict usage using a moving average or simple regression model.  
 - Send email/web alerts if load spikes exceed threshold.  
 - Use WebSocket or Socket.io for live frontend updates.
 
-
+### 🖥 Part 6 — Frontend Layer
 ### 3. Frontend Layer (React + Tailwind + Recharts)
 
 #### 🎨 Dashboard Features
@@ -119,6 +120,7 @@ frontend/
 ┣ package.json
 ┗ README.md
 
+### 📊 Part 7 — Screens & Data Flow
 #### 🖼 Example Screens
 
 **Dashboard Page**
@@ -138,7 +140,7 @@ frontend/
 ↓
 [React Dashboard]
 
-
+### 📁 Part 8 — Repo Structure
 ## 🚀 Suggested Repo Structure
 smart-energy-system/
 ┣ firmware/
@@ -148,6 +150,7 @@ smart-energy-system/
 ┗ docs/
 ┗ architecture-diagram.png
 
+### 🛠 Part 9 — Project Roadmap
 ## 🧭 Project Roadmap
 
 ### Phase 1 – Hardware + Firmware
@@ -173,6 +176,7 @@ smart-energy-system/
 - Predictive usage chart (simple moving average)  
 - Deploy backend (Render/EC2) + frontend (Vercel)
 
+### 🧠 Part 10 — Optional Add-ons
 ## 🧠 Optional Add-ons (for Senior-Level Wow Factor)
 - Add multi-user support (JWT-based authentication)  
 - Integrate Grafana dashboard via API for pro analytics  
