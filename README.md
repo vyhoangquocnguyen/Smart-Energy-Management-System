@@ -80,6 +80,7 @@ backend/
 ┣ package.json
 ┗ README.md
 
+```
 ### 💡 Part 5 — Backend Add-ons
 #### 💡 Extra Ideas
 - Predict usage using a moving average or simple regression model.  
@@ -102,7 +103,7 @@ backend/
 
 #### 🧩 Folder Structure
 
-
+```
 frontend/
 ┣ src/
 ┃ ┣ components/
@@ -119,7 +120,7 @@ frontend/
 ┃ ┗ main.jsx
 ┣ package.json
 ┗ README.md
-
+```
 ### 📊 Part 7 — Screens & Data Flow
 #### 🖼 Example Screens
 
@@ -142,6 +143,7 @@ frontend/
 
 ### 📁 Part 8 — Repo Structure
 ## 🚀 Suggested Repo Structure
+```
 smart-energy-system/
 ┣ firmware/
 ┣ backend/
@@ -149,6 +151,7 @@ smart-energy-system/
 ┣ README.md
 ┗ docs/
 ┗ architecture-diagram.png
+```
 
 ### 🛠 Part 9 — Project Roadmap
 ## 🧭 Project Roadmap
