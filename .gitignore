@@ -1,0 +1,16 @@
+# Build artifacts
+dist/
+build/
+node_modules/
+
+# IDE-specific files
+.vscode/
+.idea/
+.settings/
+.metadata/
+
+# Sensitive information
+.env
+.env.example
+config.example.json
+config.json
