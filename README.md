@@ -1,3 +1,5 @@
+# (Under migration)
+
 # ⚡️ Smart Energy Management System
 
 ## 🎯 Project Goal
