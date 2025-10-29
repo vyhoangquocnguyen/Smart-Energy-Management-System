@@ -62,11 +62,10 @@ firmware/
 - **Connection:** Output → ADC pin (e.g. `GPIO 34`)
 - **Sampling Rate:** ~1 kHz (to capture full 50 Hz AC cycle)
 - **Computation:**
- ```
-\[
-  V*{rms} = \sqrt{\frac{1}{N}\sum*{i=1}^{N}(V*i - V*{offset})^2}
-  \]
-```
+  
+$$ V_{rms} = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(V_i - V_{offset})^2} $$
+
+
 - **Calibration:**
   - Determine the actual voltage using a multimeter.
   - Adjust the calibration constant until the measured RMS value matches the real value.
@@ -80,9 +79,9 @@ firmware/
 
 - **Connection:** Output → ADC pin (e.g. `GPIO 35`)
 - **Computation:**
-  \[
-  I*{rms} = \sqrt{\frac{1}{N}\sum*{i=1}^{N}(I*i - I*{offset})^2}
-  \]
+
+ $$ I*{rms} = \sqrt{\frac{1}{N}\sum*{i=1}^{N}(I*i - I*{offset})^2} $$
+
 - **Calibration:**
   - Use a known load (e.g., 100W bulb) to measure real current via multimeter.
   - Derive a calibration factor to convert ADC readings into amperes.
@@ -96,12 +95,12 @@ firmware/
 ### 🔋 Power & Energy Calculation
 
 - **Formulas:**
-  \[
-  P = V*{rms} \times I*{rms}
-  \]
-  \[
-  E\_{Wh} += \frac{P \times \Delta t}{3600}
-  \]
+
+$$  P = V*{rms} \times I*{rms} $$
+
+
+$$  E\_{Wh} += \frac{P \times \Delta t}{3600} $$
+
 - **Explanation:**
   - `P` represents **instantaneous power** (in watts).
   - `E_Wh` accumulates **energy consumption** over time (in watt-hours).

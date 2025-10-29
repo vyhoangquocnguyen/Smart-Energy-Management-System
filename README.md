@@ -1,3 +1,5 @@
+# (Under migration)
+
 # ⚡️ Smart Energy Management System
 
 ## 🎯 Project Goal
@@ -182,7 +184,7 @@ smart-energy-system/
 - Deploy backend (Render/EC2) + frontend (Vercel)
 
 ### 🧠 Part 10 — Optional Add-ons
-## 🧠 Optional Add-ons (for Senior-Level Wow Factor)
+## 🧠 Optional Add-ons 
 - Add multi-user support (JWT-based authentication)  
 - Integrate Grafana dashboard via API for pro analytics  
 - Add mobile PWA support using React  
