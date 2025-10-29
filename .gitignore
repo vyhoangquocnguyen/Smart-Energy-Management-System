@@ -3,12 +3,13 @@ dist/
 build/
 node_modules/
 
+
 # IDE-specific files
 .vscode/
 .idea/
 .settings/
 .metadata/
-
+.pio/
 # Sensitive information
 .env
 .env.example
