@@ -1,5 +1,6 @@
 #include "wifi_task.h"
 #include "../config.h"
+#include "../utils/logger.h"
 #include <WiFi.h>
 
 static volatile bool wifi_connected = false;

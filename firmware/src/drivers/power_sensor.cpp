@@ -1,5 +1,6 @@
 #include "power_sensor.h"
-#include "config.h"
+#include "../config.h"
+
 #include <math.h>
 
 void power_sensor_init() {
@@ -18,14 +19,13 @@ void power_sensor_capture_window(SamplePair *buffer, size_t count) {
   const uint32_t period_us = 1000000UL / SAMPLE_RATE_HZ;
   uint32_t next = micros();
   for (size_t i = 0; i < count; ++i) {
-    while ((int32_t)(micros() - next) < 0) { delayMicroseconds(0); }
+    while ((int32_t)(micros() - next) < 0) { taskYIELD(); }
     next += period_us;
     buffer[i].voltage_raw = read_adc_pin(PIN_VOLTAGE);
     buffer[i].current_raw = read_adc_pin(PIN_CURRENT);
     buffer[i].ts_us = micros();
   }
 }
-
 // convert raw ADC (0..4095) to mV
 static inline float raw_to_mV(int raw) {
   return (raw / ADC_MAX_COUNT) * ADC_REF_MV;

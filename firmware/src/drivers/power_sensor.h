@@ -1,4 +1,5 @@
 #pragma once
+// #include <cstdint>
 #include <Arduino.h>
 
 struct SamplePair {
@@ -15,9 +16,8 @@ struct WindowResult {
   uint32_t window_start_ts;
 };
 
-//initialize ADV pins and settings
+//initialize ADC pins and settings
 void power_sensor_init(void);
-
 //blocking capture of SAMPLE_WINDOW_SEC worth of samples into provided buffer
 void power_sensor_capture_window(SamplePair *buffer, size_t count);
 
