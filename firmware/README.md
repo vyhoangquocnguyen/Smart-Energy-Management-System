@@ -118,6 +118,7 @@ If the MqttTask attempts to publish but the connection fails, it stores the data
 
 ### **🧾 Example Pseudocode Flow**
 
+```
 // SensorDataTask (The Producer)  
 void SensorDataTask(void\* pv) {  
   WindowResult result;  
@@ -147,6 +148,8 @@ void MqttTask(void\* pv) {
     vTaskDelay(pdMS\_TO\_TICKS(5000)); // Publishing happens every 5s loop  
   }  
 }
+
+```
 
 ### **🧪 Testing Checklist**
 
