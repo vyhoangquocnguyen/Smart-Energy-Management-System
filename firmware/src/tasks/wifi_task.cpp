@@ -5,57 +5,55 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 
+// Must be installed via platformio.ini: tzapu/WiFiManager
+#include <WiFiManager.h> 
+
+static WiFiManager wm;
+
 /**
- * @brief Attempts to connect to WiFi, yielding the task during the process.
- * IMPORTANT: Uses vTaskDelay() instead of Arduino's delay() to remain non-blocking.
+ * @brief Attempts to connect to WiFi using stored credentials, or starts Captive Portal.
+ * This runs only once during initial boot.
  */
 void connectWiFiBlocking(){
-    log_info("WiFi: connecting to %s", WIFI_SSID);
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    log_info("WiFi: Starting connection manager. Attempting auto-connect...");
     
-    // Use vTaskDelay() to yield control while waiting for connection
-    uint32_t attempts = 0;
-    const uint32_t max_attempts = 60; // Max 30 seconds (60 * 500ms)
-    
-    while(WiFi.status() != WL_CONNECTED && attempts < max_attempts){
-        vTaskDelay(pdMS_TO_TICKS(500));
-        Serial.print(".");
-        attempts++;
-    }
-    
-    if (WiFi.status() == WL_CONNECTED){
-        log_info("WiFi connected IP=%s", WiFi.localIP().toString().c_str());
-    } else{
-        log_warn("WiFi connection failed after %u attempts.", attempts);
-        WiFi.disconnect(); // Explicitly disconnect if failure to ensure clean retry later
+    // Set timeout for provisioning (5 minutes)
+    wm.setConfigPortalTimeout(300); 
+
+    // autoConnect() attempts connection. If fails, starts AP/Portal named DEVICE_ID.
+    if (!wm.autoConnect(DEVICE_ID)) { 
+        // This is only reached if the portal times out or the device cannot proceed.
+        log_error("WiFi: Provisioning Failed. Rebooting in 10s...");
+        vTaskDelay(pdMS_TO_TICKS(10000));
+        ESP.restart();
+    } else {
+        // Successful connection or provisioned successfully.
+        log_info("WiFi: Connected/Provisioned. IP=%s", WiFi.localIP().toString().c_str());
     }
 }
 
 /**
- * @brief Main WiFi task. Manages initial connection and reconnections.
- * This task is pinned to Core 0.
- * @param pvParameters Standard FreeRTOS task parameter (unused).
+ * @brief Main WiFi task. Manages connection checks and runs wm.process().
  */
 void WiFiTask(void *pvParameters){
-    // Try to connect immediately
+    // Initial connection and provisioning happens here
     connectWiFiBlocking();
     
     while(true){
-        // Check status and attempt reconnection if needed
+        // Required call to keep the WiFiManager/Captive Portal functionality alive
+        wm.process(); 
+        
         if (WiFi.status() != WL_CONNECTED){
             log_warn("WiFi disconnected, retrying...");
-            connectWiFiBlocking();
+            // Use standard WiFi.begin() with saved credentials
+            WiFi.begin();
         }
-        
+
         // Wait 5 seconds before checking status again
         vTaskDelay(pdMS_TO_TICKS(5000));
     }
 }
 
-/**
- * @brief Public function to check the current WiFi connection status.
- * @return true if connected, false otherwise.
- */
 bool WifiisConnected(){
     return(WiFi.status() == WL_CONNECTED);
 }

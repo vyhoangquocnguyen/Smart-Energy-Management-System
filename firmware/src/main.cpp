@@ -5,7 +5,6 @@
 #include "tasks/sensor_task.h"
 #include "tasks/mqtt_task.h"
 #include "drivers/power_sensor.h"
-#include "drivers/power_sensor.h"
 #include "utils/logger.h"
 #include "ota.h"
 
