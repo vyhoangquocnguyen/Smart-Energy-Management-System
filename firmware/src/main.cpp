@@ -5,10 +5,11 @@
 #include "tasks/sensor_task.h"
 #include "tasks/mqtt_task.h"
 #include "drivers/power_sensor.h"
+#include "drivers/power_sensor.h"
 #include "utils/logger.h"
 #include "ota.h"
 
-QueueHandle_t xMeasurementsQueue = NULL;
+QueueHandle_t xMeasurementsQueue;
 
 void setup() {
   Serial.begin(115200);
@@ -30,6 +31,7 @@ void setup() {
 
   // Create FreeRTOS tasks - pin to cores for deterministic behavior
   BaseType_t ok;
+
   ok = xTaskCreatePinnedToCore(WiFiTask, "WiFiTask", WIFI_TASK_STACK, NULL, WIFI_TASK_PRIORITY, NULL, 0);
   if (ok != pdPASS) {
     log_error("Failed to create WiFiTask");

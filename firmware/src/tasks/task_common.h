@@ -5,9 +5,5 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/queue.h>
 
-extern QueueHandle_t xMeasurementsQueue; // holds pointer to allocated WindowResult items
+extern QueueHandle_t xMeasurementsQueue;
 
-// Helper to allocate WindowResult on heap (publisher will free)
-struct WindowResult; // forward
-WindowResult* windowresult_alloc();
-void windowresult_free(WindowResult* wr);
